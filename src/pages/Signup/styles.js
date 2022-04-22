@@ -110,4 +110,22 @@ export const NavBar = styled.div`
 export const ContainerSelect = styled.div`
     display: flex;
     flex-direction: column;
+
+    select{
+    background: #343b41;
+    align-items: center;
+    flex: 1;
+    border: 0;
+    border-radius: 4px;
+    border: none;
+    color: #666360;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    transition: 0.4s;
+    }
+
+    label{
+
+    }
 `

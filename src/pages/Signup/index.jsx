@@ -104,14 +104,13 @@ export const Signup = ({ authenticated }) => {
               error={errors.passwordConfirm?.message}
             />
             <ContainerSelect>
-            <label>Selecionar módulo
+            <label>Selecionar módulo</label>
             <select>
               <option>Primeiro Módulo</option>
               <option>Segundo Módulo</option>
               <option>Terceiro Módulo</option>
               <option>Quarto Módulo</option>
             </select>
-            </label>
             </ContainerSelect>
             <Button type="submit">Cadastrar</Button>
           </form>
