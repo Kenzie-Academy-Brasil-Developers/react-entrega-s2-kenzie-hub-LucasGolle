@@ -4,7 +4,7 @@ export const Container = styled.div`
   text-align: left;
   div{
     color: #f8f9fa;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     span{
       color: #c53030;
     }
@@ -16,7 +16,7 @@ export const InputContainer = styled.div`
   border-radius: 4px;
   border: none;
   color: #666360;
-  padding: 12px;
+  padding: 1rem;
   width: 100%;
   display: flex;
   transition: 0.4s;

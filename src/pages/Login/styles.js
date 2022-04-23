@@ -52,8 +52,6 @@ export const AnimationContainer = styled.div`
     
     form {
         width: 340px;
-        height: 92vh;
-        
         text-align: center;
         background-color: #212529;
         padding: 42px 22px;
@@ -75,20 +73,13 @@ export const AnimationContainer = styled.div`
         }
 
         a{
-            background: #ff577f;
-            color: ${(props) => (props.whiteSchema ? "#0c0d0d" : "#f5f5f5")};
-            height: 45px;
-            border-radius: 4px;
-            border: 2px solid var(--black);
-            font-family: 'Roboto Mono', monospace;
-            margin-top: 46px;
-            width: 100%;
-            transition: 0.5s;
+            background: #868e96;
+            color: #f8f9fa;
         }
     }
     @media (min-width: 1024px){
         form{
-            width: 440px;
+            width: 400px;
             margin-left: 150px;
         }
     }
@@ -96,29 +87,30 @@ export const AnimationContainer = styled.div`
 
 export const Button = styled.button`
 background: #ff577f;
-color: ${(props) => (props.whiteSchema ? "#0c0d0d" : "#f5f5f5")};
+color: #ffffff;
 height: 45px;
 border-radius: 4px;
-border: 2px solid var(--black);
+border: none;
 font-family: 'Roboto Mono', monospace;
 margin-top: 46px;
 width: 100%;
 transition: 0.5s;
-:hover{
-    border: 2px solid #c85311;
-}
+
+
 `
 
 export const NavBar = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 35px;
+
+    img{
+        height: 19px;
+        width: 120px;
+    }
     
     @media (min-width: 1024px){
         margin-left: 150px;
-        a{
-           margin-left: 270px;
-        }
     }
 `
 
@@ -149,4 +141,20 @@ export const ContainerSelect = styled.div`
         color: #f8f9fa;
         margin-bottom: 15px;
     }
+`
+
+export const LinkSignup = styled.div`
+            width: 100%;
+            background: #868e96;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f8f9fa;
+            height: 45px;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            margin-top: 46px;
+            cursor: pointer;
+            transition: 0.5s;
+
 `

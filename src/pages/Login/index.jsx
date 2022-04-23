@@ -6,6 +6,7 @@ import {
   Container,
   Content,
   NavBar,
+  LinkSignup,
 } from "./styles";
 import Input from "../../components/Input";
 import { FiMail, FiLock } from "react-icons/fi";
@@ -90,7 +91,9 @@ export const Login = ({authenticated, setAuthenticated}) => {
             />
             <Button type="submit">Entrar</Button>
             <p>Ainda não possui uma conta?</p>
+            <LinkSignup>
             <Link to="/signup">Cadastrar-se</Link>
+            </LinkSignup>
           </form>
         </AnimationContainer>
       </Content>
