@@ -25,7 +25,7 @@ export const Signup = ({ authenticated }) => {
     email: yup.string().email("Email inválido").required("Campo obrigatório!"),
     password: yup
       .string()
-      .min(8, "Mínimo 8 dígitos")
+      .min(6, "Mínimo 6 dígitos")
       .required("Campo obrigatório!"),
     passwordConfirm: yup
       .string()
@@ -49,10 +49,10 @@ export const Signup = ({ authenticated }) => {
     const onSubmitFunction = ({ name, email, password, course_module, contact, bio }) => {
       const user = { name, email, password, course_module, contact, bio }
 
-      api.post("/users", user).then((response) => {
+      api.post("users", user).then((response) => {
         toast.success("Conta criada com sucesso");
         console.log(response)
-        return history.push('/login');
+        return history.push('/');
       })
       .catch((err) => toast.error("Erro ao criar a conta, verifique todos os campos"));
 
@@ -64,11 +64,10 @@ export const Signup = ({ authenticated }) => {
 
   return (
     <Container>
-      <Background />
       <Content>
           <NavBar>
             <img src={logo} alt="logo" className="imgLogo"></img>
-            <Link to="/login">Voltar</Link>
+            <Link to="/">Voltar</Link>
           </NavBar>
         <AnimationContainer>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
@@ -142,6 +141,7 @@ export const Signup = ({ authenticated }) => {
           </form>
         </AnimationContainer>
       </Content>
+      <Background />
     </Container>
   );
 };
