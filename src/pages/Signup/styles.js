@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components"
-import SignupImage from "../../assets/signup.jpg"
+import SignupImage from "../../assets/signupBack.jpg"
 
 export const Container = styled.div`
     height: 100vh;
@@ -7,7 +7,6 @@ export const Container = styled.div`
     align-items: stretch;
 `
 export const Background = styled.div`
-    max-width: 50vw;
     @media (min-width: 1024px){
         background: radial-gradient( circle, rgba(10, 30, 50, 0.7) 0%, rgba(10, 30, 50, 0.7) 100%), url(${SignupImage}) no-repeat;
         flex: 1;
@@ -56,20 +55,20 @@ export const AnimationContainer = styled.div`
         
         text-align: center;
         background-color: #212529;
-        padding: 42px 22px;
+        padding: 15px 35px;
         margin-bottom: 0px;
         
         h2{
-            margin-bottom: 22px;
+            margin-bottom: 12px;
             color: #f8f9fa;
         }
         
         > div{
-            margin-top: 16px;
+            margin-top: 10px;
         }
         
         p{
-            margin-top: 8px;
+            margin-top: 5px;
             color: #868e96;
             font-size: 12px;
         }
@@ -77,7 +76,6 @@ export const AnimationContainer = styled.div`
     @media (min-width: 1024px){
         form{
             width: 440px;
-            margin-left: 150px;
         }
     }
     `
@@ -89,12 +87,10 @@ height: 45px;
 border-radius: 4px;
 border: 2px solid var(--black);
 font-family: 'Roboto Mono', monospace;
-margin-top: 46px;
+margin-top: 12px;
 width: 100%;
 transition: 0.5s;
-:hover{
-    border: 2px solid #c85311;
-}
+
 `
 
 export const NavBar = styled.div`
@@ -119,7 +115,7 @@ export const NavBar = styled.div`
         align-items: center;
     }
     @media (min-width: 1024px){
-        margin-left: 150px;
+        /* margin-left: 150px; */
         a{
            margin-left: 270px;
         }

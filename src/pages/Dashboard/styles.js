@@ -1,40 +1,19 @@
-import { Switch, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import  {Signup}  from "../components/Signup/index";
-import { Login } from "../pages/Login"
-import { Dashboard } from "../pages/Dashboard"
+import styled from "styled-components";
 
-function Routes(){
-
-    const [authenticated, setAuthenticated] = useState(false)
-
-    useEffect(() => {
-        const token = JSON.parse(localStorage.getItem("@Hub:token"))
-
-        if (token){
-            return setAuthenticated(true)
-        }
-    },[authenticated])
-
-    return(
-        <AnimatePresence>
-        <Switch>
-            <Route exact path="/">
-                <Signup authenticated={authenticated}/>
-            </Route>
-            <Route path="/login">
-                <Login 
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-                />
-            </Route>
-            <Route path="/dashboard">
-                <Dashboard authenticated={authenticated}/>
-            </Route>
-        </Switch>
-        </AnimatePresence>
-    )
-}
-
-export default Routes;
+export const Header = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #212529;
+    padding-bottom: 24px;
+    padding-top: 10px;
+    
+    img{
+        margin-left: 13px;
+        margin-top: 5px;
+    }
+    
+    button{
+        margin-right: 13px;
+    }
+`
