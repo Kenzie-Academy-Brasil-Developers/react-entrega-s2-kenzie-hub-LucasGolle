@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect } from "react-router-dom";
 import logo from "../../assets/Logo.png";
+import api from "../../services/api";
 
 export const Signup = ({ authenticated }) => {
   const schema = yup.object().shape({
@@ -30,6 +31,9 @@ export const Signup = ({ authenticated }) => {
       .string()
       .oneOf([yup.ref("password")], "Senhas diferentes")
       .required("Campo obrigatório!"),
+    course_module: yup.string().required("Campo obrigatório!"),
+    contact: yup.string().required("Campo obrigatório!"),
+    bio: yup.string().required("Campo obrigatório!"), 
   });
 
   const {
@@ -42,16 +46,17 @@ export const Signup = ({ authenticated }) => {
 
   const history = useHistory();
 
-  //   const onSubmitFunction = ({ name, email, password }) => {
-  //     const user = { name, email, password }
+    const onSubmitFunction = ({ name, email, password, course_module, contact, bio }) => {
+      const user = { name, email, password, course_module, contact, bio }
 
-  //     api.post("/user/register", user).then((_) => {
-  //       toast.success("Conta criada com sucesso");
-  //       return history.push('/login');
-  //     })
-  //     .catch((err) => toast.error("Erro ao criar a conta, verifique todos os campos"));
+      api.post("/users", user).then((response) => {
+        toast.success("Conta criada com sucesso");
+        console.log(response)
+        return history.push('/login');
+      })
+      .catch((err) => toast.error("Erro ao criar a conta, verifique todos os campos"));
 
-  //   };
+    };
 
   if (authenticated) {
     return <Redirect to="/dashboard" />;
@@ -63,10 +68,10 @@ export const Signup = ({ authenticated }) => {
       <Content>
           <NavBar>
             <img src={logo} alt="logo" className="imgLogo"></img>
-            <button>Voltar</button>
+            <Link to="/login">Voltar</Link>
           </NavBar>
         <AnimationContainer>
-          <form onSubmit={handleSubmit()}>
+          <form onSubmit={handleSubmit(onSubmitFunction)}>
             <h2>Crie sua conta</h2>
             <p>Rápido e grátis, vamos nessa</p>
             <Input
@@ -103,13 +108,34 @@ export const Signup = ({ authenticated }) => {
               placeholder="Digite novamente sua senha"
               error={errors.passwordConfirm?.message}
             />
+            <Input
+              register={register}
+              name="contact"
+              icon={FiMail}
+              lable="Contato Ex: rede social"
+              type="text"
+              placeholder="Digite o seu contato"
+              error={errors.contact?.message}
+            />
+            <Input
+              register={register}
+              name="bio"
+              icon={FiMail}
+              lable="Bio"
+              type="text"
+              placeholder="Digite um pouco sobre você"
+              error={errors.bio?.message}
+            />
             <ContainerSelect>
             <label>Selecionar módulo</label>
-            <select>
-              <option>Primeiro Módulo</option>
-              <option>Segundo Módulo</option>
-              <option>Terceiro Módulo</option>
-              <option>Quarto Módulo</option>
+            <select
+            {...register("course_module")}
+            type="select"
+            >
+              <option>Módulo 1 - Introdução ao Frontend</option>
+              <option>Módulo 2 - Frontend Avançado</option>
+              <option>Módulo 3 - Introdução ao Backend</option>
+              <option>Módulo 4 - Backend Avançado</option>
             </select>
             </ContainerSelect>
             <Button type="submit">Cadastrar</Button>
