@@ -83,8 +83,14 @@ export const SelectSkills = styled.div`
         display: flex;
         flex-direction: column;
         width: 90vw;
-        margin: 0 auto;
-        padding: 1rem;
+        top: 20;
+        left: 0;
+        right: 0;
+    margin: auto;
+        max-width: 369px;
+        background: #212529;
+        padding-bottom: 2rem;
+        position: absolute;
 
         h2{
             font-family: 'Inter';
@@ -93,12 +99,60 @@ export const SelectSkills = styled.div`
             font-size: 14px;
         }
 
-        
+        span{
+            color: #868e96;
+            cursor: pointer;
+        }
+
+        label{
+            font-family: "Inter";
+            font-weight: 400;
+            color: #f8f9fa;
+            padding: 1rem;
+            font-size: 12px;
+
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 0 auto;
+            background: #343b41;
+            border: none;
+        }
+
+        select{
+            width: 90%;
+            padding: 10px;
+            margin: 0 auto;
+            margin-bottom: 16px;
+            background: #343b41;
+            border: none;
+            color: #f8f9fa;
+            border-right: 16px solid transparent;
+        }
+
+        button{
+            width: 90%;
+            padding: 10px;
+            margin: 0 auto;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background: #ff577f;
+            color: #ffffff;
+            font-family: 'Inter';
+            font-size: 12px;
+        }
 
         div{
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background: #343b41;
+            padding: 1rem;   
         }
+
+        
 
 `
