@@ -8,7 +8,7 @@ export const Container = styled.div`
 `
 export const Background = styled.div`
     @media (min-width: 1024px){
-        background: radial-gradient( circle, rgba(10, 30, 50, 0.7) 0%, rgba(10, 30, 50, 0.7) 100%), url(${SignupImage}) no-repeat;
+        background: url(${SignupImage}) no-repeat;
         flex: 1;
         background-size: cover;
         background-position-y: 30%;
@@ -51,7 +51,7 @@ export const AnimationContainer = styled.div`
     
     form {
         width: 340px;
-        height: 92vh;
+        height: 88vh;
         
         text-align: center;
         background-color: #212529;
@@ -87,7 +87,7 @@ height: 45px;
 border-radius: 4px;
 border: 2px solid var(--black);
 font-family: 'Roboto Mono', monospace;
-margin-top: 12px;
+margin-top: 25px;
 width: 100%;
 transition: 0.5s;
 

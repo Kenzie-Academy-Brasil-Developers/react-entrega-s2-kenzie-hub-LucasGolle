@@ -25,11 +25,18 @@ export const InputContainer = styled.div`
     background: transparent;
     align-items: center;
     flex: 1;
+    color: #f8faf9;
     border: 0;
     &::placeholder {
       color: #666360;
     }
+    &:focus{
+      color: #f8faf9;
+    }
+
   }
+
+
   svg {
     margin-right: 20px;
   }

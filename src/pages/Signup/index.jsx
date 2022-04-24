@@ -10,6 +10,8 @@ import {
 } from "./styles";
 import Input from "../../components/Input";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
+import { ImPencil2 } from "react-icons/im"
+import { TiSocialAtCircular } from "react-icons/ti"
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -110,7 +112,7 @@ export const Signup = ({ authenticated }) => {
             <Input
               register={register}
               name="contact"
-              icon={FiMail}
+              icon={TiSocialAtCircular}
               lable="Contato Ex: rede social"
               type="text"
               placeholder="Digite o seu contato"
@@ -119,7 +121,7 @@ export const Signup = ({ authenticated }) => {
             <Input
               register={register}
               name="bio"
-              icon={FiMail}
+              icon={ImPencil2}
               lable="Bio"
               type="text"
               placeholder="Digite um pouco sobre você"

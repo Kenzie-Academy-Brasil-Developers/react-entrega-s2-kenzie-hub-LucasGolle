@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Background = styled.div`
     max-width: 50vw;
     @media (min-width: 1024px){
-        background: radial-gradient( circle, rgba(10, 30, 50, 0.7) 0%, rgba(10, 30, 50, 0.7) 100%), url(${SignupImage}) no-repeat;
+        background: url(${SignupImage}) no-repeat;
         flex: 1;
         background-size: cover;
         background-position-y: 30%;
@@ -158,4 +158,9 @@ export const LinkSignup = styled.div`
             cursor: pointer;
             transition: 0.5s;
 
+`
+
+export const DivInput = styled.div`
+
+    
 `

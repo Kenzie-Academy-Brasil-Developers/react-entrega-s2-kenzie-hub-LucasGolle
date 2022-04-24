@@ -18,56 +18,51 @@ import Card from "../../components/Cards";
 export const Dashboard = ({ authenticated }) => {
   
   const {register, handleSubmit} = useForm();
-
+  
   const [token] = useState(
     JSON.parse(localStorage.getItem("@KenzieHub:token")) || ""
-  );
+    );
+    
+    const [user] = useState(JSON.parse(localStorage.getItem("user")));
+    
+    const [skills, setSkills] = useState([]);
+    
+    const [popup, setPopup] = useState(false);
+    
+    const onOffPopup = () => {
+      setPopup(!popup);
+    };
+    
+    const loadSkills = () => {
+      api.get(`users/${user.id}`).then((response) => setSkills(response.data.techs))
 
-  const [user] = useState(JSON.parse(localStorage.getItem("user")));
-
-  const [skills, setSkills] = useState([]);
-
-  const [popup, setPopup] = useState(false);
-
-  const onOffPopup = () => {
-    setPopup(!popup);
-  };
-
-  const loadSkills = () => {
-    api
-      .get("/techs", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setSkills(response.data))
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    loadSkills();
-  }, []);
-
-  const onSubmit = ({ techs }) => {
-    if (!techs) {
+    };
+    
+    useEffect(() => {
+      loadSkills();
+    }, []);
+    
+    const onSubmit = (techs) => {
+      if (!techs) {
       return toast.error("Complete o campo obrigatório");
     }
+
     api
       .post(
         "users/techs",
-        {
-          title: techs,
-          status: techs,
-        },
+        techs,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
-      )
-      .then((response) => loadSkills());
-  };
+        )
+        .then((response) => loadSkills());
+        console.log(techs)
 
+      };
+
+      
   if (!authenticated) {
     return <Redirect to="/login" />;
   }
