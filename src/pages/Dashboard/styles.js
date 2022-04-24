@@ -79,7 +79,7 @@ export const Header = styled.div`
     }
 `
 
-export const SelectSkills = styled.div`
+export const SelectSkills = styled.form`
         display: flex;
         flex-direction: column;
         width: 90vw;
@@ -153,6 +153,11 @@ export const SelectSkills = styled.div`
             padding: 1rem;   
         }
 
-        
+`
 
+export const SkillsContainer = styled.div`
+    padding: 1rem;
+    background: #212529;
+    width: 94vw;
+    margin: 0 auto;
 `

@@ -6,6 +6,7 @@ import {
   UserStats,
   UserSkills,
   SelectSkills,
+  SkillsContainer,
 } from "./styles";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,6 +16,9 @@ import { toast } from "react-toastify";
 import Card from "../../components/Cards";
 
 export const Dashboard = ({ authenticated }) => {
+  
+  const {register, handleSubmit} = useForm();
+
   const [token] = useState(
     JSON.parse(localStorage.getItem("@KenzieHub:token")) || ""
   );
@@ -31,7 +35,7 @@ export const Dashboard = ({ authenticated }) => {
 
   const loadSkills = () => {
     api
-      .get("/skills", {
+      .get("/techs", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,22 +48,24 @@ export const Dashboard = ({ authenticated }) => {
     loadSkills();
   }, []);
 
-  const onSubmit = ({ skill }) => {
-    if (!skill) {
+  const onSubmit = ({ techs }) => {
+    if (!techs) {
       return toast.error("Complete o campo obrigatório");
     }
-    api.post(
-      "users/techs",
-      {
-        title: skill,
-        status: skill,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    api
+      .post(
+        "users/techs",
+        {
+          title: techs,
+          status: techs,
         },
-      }
-    ).then((response) => loadSkills())
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => loadSkills());
   };
 
   if (!authenticated) {
@@ -71,7 +77,7 @@ export const Dashboard = ({ authenticated }) => {
       <Container>
         <Header>
           <img src={logo} alt="logo" className="imgLogo"></img>
-          <Button />
+          <Button/>
         </Header>
         <UserStats>
           <h1>Olá, {user.name}</h1>
@@ -82,35 +88,35 @@ export const Dashboard = ({ authenticated }) => {
           <button onClick={onOffPopup}>+</button>
         </UserSkills>
         {popup && (
-          <SelectSkills onSubmit={handleSubmit(onSubmit)>
+          <SelectSkills onSubmit={handleSubmit(onSubmit)}>
             <div>
               <h2>Cadastrar Tecnolodia</h2>
               <span onClick={onOffPopup}>x</span>
             </div>
             <label>Nome</label>
             <input
+              {...register("title")}
               name="title"
               placeholder="Digite aqui sua tecnologia"
               type="text"
             ></input>
             <label>Selecionar status</label>
-            <select>
+            <select
+            {...register("status")}
+            type="select"
+            >
               <option>Iniciante</option>
               <option>Intermediário</option>
               <option>Avançado</option>
             </select>
-            <button>Cadastrar Tecnologia</button>
+            <button type="submit">Cadastrar Tecnologia</button>
           </SelectSkills>
         )}
-        {skills.map((skill) => (
-          <Card
-            onSubmit={() => onSubmit()}
-            key={skill.id}
-            title={skill.title}
-            status={skill.status}
-            onClick={() => {}}
-          />
-        ))}
+        <SkillsContainer>
+          {skills.map((skill) => (
+            <Card key={skill.id} title={skill.title} status={skill.status} onClick={() => {}} />
+          ))}
+        </SkillsContainer>
       </Container>
     </>
   );
