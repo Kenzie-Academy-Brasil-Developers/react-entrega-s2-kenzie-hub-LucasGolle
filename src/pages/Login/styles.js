@@ -75,6 +75,7 @@ export const AnimationContainer = styled.div`
         a{
             background: #868e96;
             color: #f8f9fa;
+            width: 100%;
         }
     }
     @media (min-width: 1024px){
