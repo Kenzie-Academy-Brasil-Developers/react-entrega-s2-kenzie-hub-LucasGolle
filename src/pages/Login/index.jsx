@@ -42,11 +42,13 @@ export const Login = ({authenticated, setAuthenticated}) => {
     
     api.post("sessions", data).then(response =>{
 
-        const { token } = response.data;
+        const { token, user } = response.data;
 
         toast.success("Login feito com sucesso")
 
         localStorage.setItem("@KenzieHub:token", JSON.stringify(token))
+
+        localStorage.setItem("user", JSON.stringify(user))
 
         setAuthenticated(true)
 
