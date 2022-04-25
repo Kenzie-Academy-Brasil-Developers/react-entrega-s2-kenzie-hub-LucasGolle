@@ -7,6 +7,12 @@ import {
   UserSkills,
   SelectSkills,
   SkillsContainer,
+  EditSkill,
+  ButtonContainer,
+  HeaderContainer,
+  ButtonRight,
+  ButtonLeft,
+  Hr,
 } from "./styles";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,6 +34,12 @@ export const Dashboard = ({ authenticated }) => {
     const [skills, setSkills] = useState([]);
     
     const [popup, setPopup] = useState(false);
+
+    const [skillEdit, setskillEdit] = useState(false);
+
+    const editFunction = (id) =>{
+      setskillEdit(!skillEdit)
+    }
     
     const onOffPopup = () => {
       setPopup(!popup);
@@ -41,6 +53,21 @@ export const Dashboard = ({ authenticated }) => {
     useEffect(() => {
       loadSkills();
     }, []);
+
+
+    const excludeUpdate = (id) => {
+      const newSkill = skills.filter((skill) => skill.id !== id);
+  
+      api
+        .delete(
+          `users/techs/:${id}`, 
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        ).then((response) => setSkills(newSkill));
+    };
     
     const onSubmit = (techs) => {
       if (!techs) {
@@ -58,10 +85,8 @@ export const Dashboard = ({ authenticated }) => {
         }
         )
         .then((response) => loadSkills());
-        console.log(techs)
-
       };
-
+      
       
   if (!authenticated) {
     return <Redirect to="/login" />;
@@ -74,10 +99,12 @@ export const Dashboard = ({ authenticated }) => {
           <img src={logo} alt="logo" className="imgLogo"></img>
           <Button/>
         </Header>
+        <Hr/>
         <UserStats>
           <h1>Olá, {user.name}</h1>
           <p>{user.course_module}</p>
         </UserStats>
+        <Hr/>
         <UserSkills>
           <h2>Tecnologias</h2>
           <button onClick={onOffPopup}>+</button>
@@ -105,11 +132,39 @@ export const Dashboard = ({ authenticated }) => {
               <option>Avançado</option>
             </select>
             <button type="submit">Cadastrar Tecnologia</button>
-          </SelectSkills>
+          </SelectSkills> 
         )}
+
+       {skillEdit && <EditSkill onSubmit={handleSubmit(excludeUpdate())}>
+        <HeaderContainer>
+              <h2>Tecnologia Detalhes</h2>
+              <span onClick={editFunction}>x</span>
+            </HeaderContainer>
+            <label>Nome</label>
+            <input
+              {...register("title")}
+              name="title"
+              placeholder="Digite aqui sua tecnologia"
+              type="text"
+            ></input>
+            <label>Selecionar status</label>
+            <select
+            {...register("status")}
+            type="select"
+            >
+              <option>Iniciante</option>
+              <option>Intermediário</option>
+              <option>Avançado</option>
+            </select>
+            <ButtonContainer>
+            <ButtonLeft type="submit">Salvar alterações</ButtonLeft>
+            <ButtonRight type="submit">Excluir</ButtonRight>
+            </ButtonContainer>
+        </EditSkill>}
+
         <SkillsContainer>
           {skills.map((skill) => (
-            <Card key={skill.id} title={skill.title} status={skill.status} onClick={() => {}} />
+            <Card key={skill.id} title={skill.title} status={skill.status} onClick={() => editFunction(skill.id)} />
           ))}
         </SkillsContainer>
       </Container>

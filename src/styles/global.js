@@ -30,6 +30,10 @@ export default createGlobalStyle`
         font-weight: 500;
     }
 
+    button:hover{
+        filter: brightness(0.9);
+    }
+
     a{
         text-decoration: none;
     }

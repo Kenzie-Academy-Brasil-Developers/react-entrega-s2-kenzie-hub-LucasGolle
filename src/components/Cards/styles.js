@@ -11,6 +11,11 @@ export const Container = styled.div`
           align-items: center;
           border-radius: 4px;
           width: 100%;
+          cursor: pointer;
+
+          &:hover{
+           filter: brightness(0.9);
+    }
 
           h2{
             font-family: 'Inter', sans-serif;
