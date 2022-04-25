@@ -68,7 +68,8 @@ export const Login = ({authenticated, setAuthenticated}) => {
 
 
   if (authenticated){
-    return <Redirect to="/dashboard"/>;
+    console.log(true)
+    // return <Redirect to="/dashboard"/>;
   }
 
 

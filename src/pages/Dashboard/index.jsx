@@ -37,7 +37,9 @@ export const Dashboard = ({ authenticated }) => {
 
     const [skillEdit, setskillEdit] = useState(false);
 
-    const editFunction = (id) =>{
+    const [id, setId] = useState("")
+
+    const editFunction = () =>{
       setskillEdit(!skillEdit)
     }
     
@@ -55,20 +57,32 @@ export const Dashboard = ({ authenticated }) => {
     }, []);
 
 
-    const excludeUpdate = (id) => {
-      const newSkill = skills.filter((skill) => skill.id !== id);
-  
-      api
-        .delete(
-          `users/techs/:${id}`, 
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        ).then((response) => setSkills(newSkill));
-    };
+      const excludeUpdate = () => {
+        // const newSkill = skills.filter((skill) => skill.id !== id);
     
+        api
+          .delete(
+            `users/techs/${id}`, 
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          ).then((response) => loadSkills());
+      };
+
+      const editTech = (data) => {
+        api
+          .put(
+            `users/techs/${id}`, data,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }).then((response) => loadSkills());
+            console.log(data)
+      };
+      
     const onSubmit = (techs) => {
       if (!techs) {
       return toast.error("Complete o campo obrigatório");
@@ -89,7 +103,9 @@ export const Dashboard = ({ authenticated }) => {
       
       
   if (!authenticated) {
-    return <Redirect to="/login" />;
+
+    return console.log(true)
+    // return <Redirect to="/login" />;
   }
 
   return (
@@ -135,7 +151,7 @@ export const Dashboard = ({ authenticated }) => {
           </SelectSkills> 
         )}
 
-       {skillEdit && <EditSkill onSubmit={handleSubmit(excludeUpdate())}>
+        {skillEdit && <EditSkill onSubmit={handleSubmit(excludeUpdate(id))}>
         <HeaderContainer>
               <h2>Tecnologia Detalhes</h2>
               <span onClick={editFunction}>x</span>
@@ -157,14 +173,17 @@ export const Dashboard = ({ authenticated }) => {
               <option>Avançado</option>
             </select>
             <ButtonContainer>
-            <ButtonLeft type="submit">Salvar alterações</ButtonLeft>
-            <ButtonRight type="submit">Excluir</ButtonRight>
+            <ButtonLeft type="button" onClick={editTech}>Salvar alterações</ButtonLeft>
+            <ButtonRight onClick={editFunction} type="submit">Excluir</ButtonRight>
             </ButtonContainer>
         </EditSkill>}
 
         <SkillsContainer>
           {skills.map((skill) => (
-            <Card key={skill.id} title={skill.title} status={skill.status} onClick={() => editFunction(skill.id)} />
+            <Card title={skill.title} status={skill.status} onClick={() => {
+              editFunction() 
+              setId(skill.id)
+            }} />  
           ))}
         </SkillsContainer>
       </Container>

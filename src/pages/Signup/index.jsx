@@ -17,7 +17,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import logo from "../../assets/Logo.png";
 import api from "../../services/api";
 
@@ -61,7 +61,8 @@ export const Signup = ({ authenticated }) => {
     };
 
   if (authenticated) {
-    return <Redirect to="/dashboard" />;
+    return console.log(true)
+    // return <Redirect to="/dashboard" />;
   }
 
   return (
