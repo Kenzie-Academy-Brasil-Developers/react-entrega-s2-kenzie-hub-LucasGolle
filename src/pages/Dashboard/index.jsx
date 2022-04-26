@@ -68,7 +68,10 @@ export const Dashboard = ({ authenticated }) => {
                 Authorization: `Bearer ${token}`,
               },
             }
-          ).then((response) => setSkills(newSkill));
+          ).then((response) => {
+            setSkills(newSkill)
+            toast.success("Tecnologia excluída")
+          });
       };
 
       const editUpdate = (data) => {
@@ -81,7 +84,9 @@ export const Dashboard = ({ authenticated }) => {
                 Authorization: `Bearer ${token}`,
               },
             }
-          ).then((response) => loadSkills());
+          ).then((response) => {
+            loadSkills()
+          });
       };
       
     const onSubmit = (techs) => {
@@ -99,7 +104,10 @@ export const Dashboard = ({ authenticated }) => {
           },
         }
         )
-        .then((response) => loadSkills());
+        .then((response) => {
+          loadSkills()
+          toast.success("Tecnologia adicionada com sucesso")
+        });
       };
 
       const logout = () =>{
