@@ -86,6 +86,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
       });
   };
 
+  
+
   const onSubmit = (techs) => {
     if (!techs) {
       return toast.error("Complete o campo obrigatório");
@@ -100,7 +102,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
       .then((response) => {
         loadSkills();
         toast.success("Tecnologia adicionada com sucesso");
-      }).catch((err) => toast.error("Você já possui essa tecnologia"))
+      })
+      .catch((err) => toast.error("Você já possui essa tecnologia"));
   };
 
   const logout = () => {
@@ -132,7 +135,6 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
         </UserSkills>
         {popup && (
           <GlobalPopUp>
-            {" "}
             <SelectSkills onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <h2>Cadastrar Tecnolodia</h2>
@@ -152,13 +154,12 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                 <option>Avançado</option>
               </select>
               <button type="submit">Cadastrar Tecnologia</button>
-            </SelectSkills>{" "}
+            </SelectSkills>
           </GlobalPopUp>
         )}
 
         {skillEdit && (
           <GlobalPopUp>
-            {" "}
             <EditSkill onClick={handleSubmit(editUpdate)}>
               <HeaderContainer>
                 <h2>Tecnologia Detalhes</h2>
@@ -166,7 +167,6 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
               </HeaderContainer>
               <label>Nome</label>
               <input
-                {...register("title")}
                 name="title"
                 value={placeInput}
                 disabled={true}
@@ -178,7 +178,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                 <option>Avançado</option>
               </select>
               <ButtonContainer>
-                <ButtonLeft type="button" onClick={editFunction}>
+                <ButtonLeft type="submit">
                   Salvar alterações
                 </ButtonLeft>
                 <ButtonRight
@@ -191,7 +191,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                   Excluir
                 </ButtonRight>
               </ButtonContainer>
-            </EditSkill>{" "}
+            </EditSkill>
           </GlobalPopUp>
         )}
 
