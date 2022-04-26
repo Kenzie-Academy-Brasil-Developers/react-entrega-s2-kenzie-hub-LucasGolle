@@ -40,6 +40,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
 
     const [id, setId] = useState([])
 
+    const [placeInput, setPlaceInput] = useState("")
+
     const editFunction = () =>{
       setskillEdit(!skillEdit)
     }
@@ -175,8 +177,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
             <input
              {...register("title")}
               name="title"
-              placeholder="Digite aqui sua tecnologia"
-              type="text"
+              value={placeInput}
+              disabled={true}
             ></input>
             <label>Selecionar status</label>
             <select
@@ -199,7 +201,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
         <SkillsContainer>
           {skills.map((skill) => (
             <Card key={skill.id} title={skill.title} status={skill.status} onClick={() => {
-              editFunction() 
+              editFunction()
+              setPlaceInput(skill.title) 
               setId(skill.id)
             }} />  
           ))}
