@@ -30,7 +30,9 @@ function Routes(){
                 <Signup authenticated={authenticated}/>
             </Route>
             <Route path="/dashboard">
-                <Dashboard authenticated={authenticated}/>
+                <Dashboard authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+                />  
             </Route>
         </Switch>
         </AnimatePresence>

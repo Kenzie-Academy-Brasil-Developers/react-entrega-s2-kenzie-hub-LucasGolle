@@ -22,7 +22,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import Card from "../../components/Cards";
 
-export const Dashboard = ({ authenticated }) => {
+export const Dashboard = ({ authenticated, setAuthenticated }) => {
   
   const {register, handleSubmit} = useForm();
   
@@ -113,6 +113,8 @@ export const Dashboard = ({ authenticated }) => {
 
       const logout = () =>{
         localStorage.clear()
+        setAuthenticated(false)
+        return <Redirect to="/"/>
       } 
       
       
@@ -126,7 +128,7 @@ export const Dashboard = ({ authenticated }) => {
       <Container>
         <Header>
           <img src={logo} alt="logo" className="imgLogo"></img>
-          <Button onclick={logout}/>
+          <Button onClick={logout}/>
         </Header>
         <Hr/>
         <UserStats>
