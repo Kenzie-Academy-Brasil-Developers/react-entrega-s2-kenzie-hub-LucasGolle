@@ -1,7 +1,10 @@
 import styled from "styled-components"
+import { keyframes } from "styled-components"
 
 
 export const Container = styled.div`
+
+
           display: flex;
           justify-content: space-between;
           padding: 1rem;
@@ -13,9 +16,23 @@ export const Container = styled.div`
           width: 100%;
           cursor: pointer;
 
+          animation: 2s animationCard;
+
           &:hover{  
           box-shadow: 0 0 20px 1px #ff577f;
     }
+
+          @keyframes animationCard {
+            10%{
+              height: 48px;
+              width: 10%;
+                
+            }
+
+            100%{
+              width: 100%;
+            }
+          }
 
           h2{
             font-family: 'Inter', sans-serif;

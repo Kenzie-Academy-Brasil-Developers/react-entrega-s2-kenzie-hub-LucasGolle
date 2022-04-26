@@ -369,6 +369,8 @@ export const ButtonRight = styled.div`
 export const SkillsContainer = styled.div`
     padding: 1rem;
     background: #212529;
+    display: flex;
+    flex-direction: column;
     width: 94vw;
     margin: 0 auto;
 
