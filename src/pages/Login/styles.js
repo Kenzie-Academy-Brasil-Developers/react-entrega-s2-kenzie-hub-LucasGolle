@@ -1,33 +1,32 @@
-import styled, { keyframes } from "styled-components"
-import SignupImage from "../../assets/signup.jpg"
+import styled, { keyframes } from "styled-components";
+import SignupImage from "../../assets/signup.jpg";
 
 export const Container = styled.div`
-    height: 100vh;
-    display: flex;
-    align-items: stretch;
-`
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+`;
 export const Background = styled.div`
-    max-width: 50vw;
-    @media (min-width: 1024px){
-        background: url(${SignupImage}) no-repeat;
-        flex: 1;
-        background-size: cover;
-        background-position-y: 30%;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-    }
-
-`
+  max-width: 50vw;
+  @media (min-width: 1024px) {
+    background: url(${SignupImage}) no-repeat;
+    flex: 1;
+    background-size: cover;
+    background-position-y: 30%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+`;
 
 export const Content = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 700px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+`;
 
 const appearFromRight = keyframes`
     from{
@@ -40,87 +39,88 @@ const appearFromRight = keyframes`
         transform: translateX(0px)
     }
 
-`
+`;
 
 export const AnimationContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    animation: ${appearFromRight} 1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: ${appearFromRight} 1s;
 
-    
+  form {
+    width: 340px;
+    text-align: center;
+    background-color: #212529;
+    padding: 42px 22px;
+    margin-bottom: 0px;
+
+    h2 {
+      margin-bottom: 22px;
+      color: #f8f9fa;
+    }
+
+    > div {
+      margin-top: 16px;
+    }
+
+    p {
+      margin-top: 8px;
+      color: #868e96;
+      font-size: 12px;
+    }
+
+    a {
+      background: #868e96;
+      color: #f8f9fa;
+      width: 100%;
+    }
+  }
+  @media (min-width: 1024px) {
     form {
-        width: 340px;
-        text-align: center;
-        background-color: #212529;
-        padding: 42px 22px;
-        margin-bottom: 0px;
-        
-        h2{
-            margin-bottom: 22px;
-            color: #f8f9fa;
-        }
-        
-        > div{
-            margin-top: 16px;
-        }
-        
-        p{
-            margin-top: 8px;
-            color: #868e96;
-            font-size: 12px;
-        }
-
-        a{
-            background: #868e96;
-            color: #f8f9fa;
-            width: 100%;
-        }
+      width: 400px;
+      margin-left: 150px;
     }
-    @media (min-width: 1024px){
-        form{
-            width: 400px;
-            margin-left: 150px;
-        }
-    }
-    `
+  }
+`;
 
 export const Button = styled.button`
-background: #ff577f;
-color: #ffffff;
-height: 45px;
-border-radius: 4px;
-border: none;
-font-family: 'Roboto Mono', monospace;
-margin-top: 46px;
-width: 100%;
-transition: 0.5s;
+  background: #ff577f;
+  color: #ffffff;
+  height: 45px;
+  border-radius: 4px;
+  border: none;
+  font-family: "Roboto Mono", monospace;
+  margin-top: 46px;
+  width: 100%;
+  transition: 0.5s;
 
-
-`
+  &:hover{
+      box-shadow: 10px 0 20px 1px #ff577f;
+  }
+`;
 
 export const NavBar = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
 
-    img{
-        height: 19px;
-        width: 120px;
-    }
-    
-    @media (min-width: 1024px){
-        margin-left: 150px;
-    }
-`
+  img {
+    height: 19px;
+    width: 120px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: 150px;
+  }
+`;
 
 export const ContainerSelect = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 
-    select{
+  select {
     background: #343b41;
     align-items: center;
     flex: 1;
@@ -136,35 +136,33 @@ export const ContainerSelect = styled.div`
     font-size: 1rem;
     font-weight: 400;
     padding-left: 30px;
-    }
+  }
 
-    label{
-        color: #f8f9fa;
-        margin-bottom: 15px;
-    }
-`
+  label {
+    color: #f8f9fa;
+    margin-bottom: 15px;
+  }
+`;
 
 export const LinkSignup = styled.div`
-            width: 100%;
-            background: #868e96;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #f8f9fa;
-            height: 45px;
-            border-radius: 4px;
-            font-family: 'Roboto Mono', monospace;
-            margin-top: 46px;
-            cursor: pointer;
-            transition: 0.5s;
+  width: 100%;
+  background: #868e96;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f8f9fa;
+  height: 45px;
+  border-radius: 4px;
+  font-family: "Roboto Mono", monospace;
+  margin-top: 46px;
+  cursor: pointer;
+  transition: 0.5s;
 
-            &:hover{
-        filter: brightness(1.2);
-    }
+  &:hover {
+    filter: brightness(1.2);
+    box-shadow: 10px 0 20px 1px #868e96;
+  }
 
-`
+`;
 
-export const DivInput = styled.div`
-
-    
-`
+export const DivInput = styled.div``;

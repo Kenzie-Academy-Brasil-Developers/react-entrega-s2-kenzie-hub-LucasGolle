@@ -97,6 +97,10 @@ margin-top: 25px;
 width: 100%;
 transition: 0.5s;
 
+&:hover {
+    box-shadow: 10px 0 20px 1px #59323F;
+  }
+
 `
 
 export const NavBar = styled.div`
@@ -122,6 +126,7 @@ export const NavBar = styled.div`
 
         &:hover{
         filter: brightness(1.2);
+        box-shadow: 10px 0 20px 1px #212529;
     }
     }
     @media (min-width: 1024px){

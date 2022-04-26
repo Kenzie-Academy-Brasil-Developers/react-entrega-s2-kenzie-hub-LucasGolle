@@ -75,7 +75,12 @@ export const UserSkills = styled.div`
 
         button{
             margin-right: 0px;
+            &:hover{
+        box-shadow: 10px 0 20px 1px #212529;
+    }
         }
+
+        
     }
 
     h2{
@@ -210,6 +215,9 @@ export const SelectSkills = styled.form`
             color: #ffffff;
             font-family: 'Inter';
             font-size: 12px;
+            &:hover{
+      box-shadow: 10px 0 20px 1px #ff577f;
+  }
         }
 
         div{
@@ -337,6 +345,7 @@ export const ButtonLeft = styled.div`
 
        &:hover{
         filter: brightness(0.9);
+        box-shadow: 10px 0 20px 1px #59323f;
        }
 `
 
@@ -352,6 +361,7 @@ export const ButtonRight = styled.div`
     
     &:hover{
         filter: brightness(0.9);
+        box-shadow: 10px 0 20px 1px #868e96;
     }
 
 `

@@ -10,4 +10,8 @@ export const Container = styled.button`
     width: 56px;
     transition: 0.5s;
     cursor: pointer;
+
+    &:hover{
+        box-shadow: 10px 0 20px 1px #212529;
+    }
 `;

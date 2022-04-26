@@ -13,8 +13,8 @@ export const Container = styled.div`
           width: 100%;
           cursor: pointer;
 
-          &:hover{
-           background: #868e96;
+          &:hover{  
+          box-shadow: 0 0 20px 1px #ff577f;
     }
 
           h2{
@@ -25,7 +25,7 @@ export const Container = styled.div`
           }
 
           span{
-            color: #f8f9fa;
+            color: #868E96;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
           }
