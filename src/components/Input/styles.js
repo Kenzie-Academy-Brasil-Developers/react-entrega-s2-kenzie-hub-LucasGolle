@@ -16,7 +16,7 @@ export const InputContainer = styled.div`
   border-radius: 4px;
   border: none;
   color: #666360;
-  padding: 14px;
+  padding: 1rem;
   width: 100%;
   display: flex;
   transition: 0.4s;

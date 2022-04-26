@@ -182,6 +182,7 @@ export const SelectSkills = styled.form`
             padding: 10px;
             margin: 0 auto;
             background: #343b41;
+            color: #f8faf9;
             border: none;
         }
 
@@ -189,8 +190,10 @@ export const SelectSkills = styled.form`
             width: 90%;
             padding: 10px;
             margin: 0 auto;
+            font-size: 15px;
             margin-bottom: 16px;
             background: #343b41;
+            cursor: pointer;
             border: none;
             color: #f8f9fa;
             border-right: 16px solid transparent;
@@ -258,6 +261,7 @@ export const EditSkill = styled.form`
             padding: 10px;
             margin: 0 auto;
             background: #343b41;
+            color: #f8faf9;
             border: none;
         }
 
@@ -268,7 +272,9 @@ export const EditSkill = styled.form`
             margin-bottom: 16px;
             background: #343b41;
             border: none;
+            font-size: 15px;
             color: #f8f9fa;
+            cursor: pointer;
             border-right: 16px solid transparent;
         }
 

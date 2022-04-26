@@ -50,9 +50,9 @@ export const AnimationContainer = styled.div`
 
     
     form {
-        width: 340px;
-        height: 88vh;
-        
+        width: 320px;
+        height: 70vh;
+        overflow-x: scroll;
         text-align: center;
         background-color: #212529;
         padding: 15px 35px;
@@ -66,16 +66,22 @@ export const AnimationContainer = styled.div`
         > div{
             margin-top: 10px;
         }
-        
+
         p{
             margin-top: 5px;
             color: #868e96;
             font-size: 12px;
         }
+
+        select{
+            cursor: pointer;
+        }
     }
     @media (min-width: 1024px){
         form{
             width: 440px;
+            overflow-x: hidden;
+            padding: 3rem;
         }
     }
     `
@@ -101,7 +107,7 @@ export const NavBar = styled.div`
 
 
     a{
-        margin-left: 170px;
+        margin-left: 140px;
         background: #212529;
         padding: 0px,16px,0px,16px;
         height: 42px;
@@ -113,9 +119,13 @@ export const NavBar = styled.div`
         justify-content: center;
         cursor: pointer;
         align-items: center;
+
+        &:hover{
+        filter: brightness(1.2);
+    }
     }
     @media (min-width: 1024px){
-        /* margin-left: 150px; */
+
         a{
            margin-left: 270px;
         }

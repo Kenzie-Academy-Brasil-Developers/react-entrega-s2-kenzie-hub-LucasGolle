@@ -1,8 +1,8 @@
 import {Container} from "./styles"
 
-export const Button = () =>{
+export const Button = ({onclick}) =>{
 
     return (
-        <Container>Sair</Container>
+        <Container onclick={onclick}>Sair</Container>
     )
 }

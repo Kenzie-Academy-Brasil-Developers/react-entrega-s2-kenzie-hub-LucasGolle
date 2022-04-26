@@ -2,7 +2,7 @@ import { Container } from "./styles"
 
 function Card ({title, status, onClick, id}){
     return(
-        <Container onClick={onClick} key={id}>
+        <Container onClick={onClick}>
                 <h2>{title}</h2>
                 <span>{status}</span>
         </Container>

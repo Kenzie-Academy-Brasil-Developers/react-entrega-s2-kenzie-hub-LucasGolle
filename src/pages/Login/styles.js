@@ -158,6 +158,10 @@ export const LinkSignup = styled.div`
             cursor: pointer;
             transition: 0.5s;
 
+            &:hover{
+        filter: brightness(1.2);
+    }
+
 `
 
 export const DivInput = styled.div`
