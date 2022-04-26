@@ -130,7 +130,7 @@ export const Signup = ({ authenticated }) => {
             <ContainerSelect>
             <label>Selecionar módulo</label>
             <select
-            {...register("course_module")}
+            {...register("course_module")}  
             type="select"
             >
               <option>Módulo 1 - Introdução ao Frontend</option>

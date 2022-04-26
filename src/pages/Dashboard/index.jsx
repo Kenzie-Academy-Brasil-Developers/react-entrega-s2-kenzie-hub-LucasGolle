@@ -179,12 +179,11 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                 <option>Avançado</option>
               </select>
               <ButtonContainer>
-                <ButtonLeft type="submit">
+                <ButtonLeft type="submit" onClick={editFunction}>
                   Salvar alterações
                 </ButtonLeft>
                 <ButtonRight
                   onClick={() => {
-                    editFunction();
                     excludeUpdate(id);
                   }}
                   type="button"
