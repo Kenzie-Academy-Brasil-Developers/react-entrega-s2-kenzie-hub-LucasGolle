@@ -14,7 +14,7 @@ export const Container = styled.div`
           cursor: pointer;
 
           &:hover{
-           filter: brightness(0.9);
+           background: #868e96;
     }
 
           h2{
@@ -25,7 +25,7 @@ export const Container = styled.div`
           }
 
           span{
-            color: #868e96;
+            color: #f8f9fa;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
           }
