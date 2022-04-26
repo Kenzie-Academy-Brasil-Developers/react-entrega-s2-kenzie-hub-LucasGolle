@@ -100,7 +100,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
       .then((response) => {
         loadSkills();
         toast.success("Tecnologia adicionada com sucesso");
-      });
+      }).catch((err) => toast.error("Você já possui essa tecnologia"))
   };
 
   const logout = () => {
