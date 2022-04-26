@@ -221,6 +221,18 @@ export const SelectSkills = styled.form`
         }
 
 `
+export const GlobalPopUp = styled.div`
+        background: rgba(0,0,0,0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+`
 
 export const EditSkill = styled.form`
             display: flex;

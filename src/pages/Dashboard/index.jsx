@@ -13,6 +13,7 @@ import {
   ButtonRight,
   ButtonLeft,
   Hr,
+  GlobalPopUp,
 } from "./styles";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -111,7 +112,7 @@ export const Dashboard = ({ authenticated }) => {
       };
 
       const logout = () =>{
-        return <Redirect to="/"/>;
+        localStorage.clear()
       } 
       
       
@@ -138,7 +139,7 @@ export const Dashboard = ({ authenticated }) => {
           <button onClick={onOffPopup}>+</button>
         </UserSkills>
         {popup && (
-          <SelectSkills onSubmit={handleSubmit(onSubmit)}>
+          <GlobalPopUp> <SelectSkills onSubmit={handleSubmit(onSubmit)}>
             <div>
               <h2>Cadastrar Tecnolodia</h2>
               <span onClick={onOffPopup}>x</span>
@@ -160,10 +161,10 @@ export const Dashboard = ({ authenticated }) => {
               <option>Avançado</option>
             </select>
             <button type="submit">Cadastrar Tecnologia</button>
-          </SelectSkills> 
+          </SelectSkills> </GlobalPopUp>
         )}
 
-        {skillEdit && <EditSkill onClick={handleSubmit(editUpdate)}>
+        {skillEdit && <GlobalPopUp> <EditSkill onClick={handleSubmit(editUpdate)}>
         <HeaderContainer>
               <h2>Tecnologia Detalhes</h2>
               <span onClick={editFunction}>x</span>
@@ -191,7 +192,7 @@ export const Dashboard = ({ authenticated }) => {
               excludeUpdate(id)
             }} type="button">Excluir</ButtonRight>
             </ButtonContainer>
-        </EditSkill>}
+        </EditSkill> </GlobalPopUp>}
 
         <SkillsContainer>
           {skills.map((skill) => (
