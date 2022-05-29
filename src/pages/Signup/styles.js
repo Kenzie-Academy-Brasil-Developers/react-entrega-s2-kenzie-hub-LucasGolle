@@ -80,6 +80,8 @@ export const AnimationContainer = styled.div`
     @media (min-width: 1024px){
         form{
             width: 440px;
+            height: 85vh;
+            overflow-y: hidden;
             overflow-x: hidden;
             padding: 3rem;
         }

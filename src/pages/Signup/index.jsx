@@ -10,8 +10,8 @@ import {
 } from "./styles";
 import Input from "../../components/Input";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
-import { ImPencil2 } from "react-icons/im"
-import { TiSocialAtCircular } from "react-icons/ti"
+import { ImPencil2 } from "react-icons/im";
+import { TiSocialAtCircular } from "react-icons/ti";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +35,7 @@ export const Signup = ({ authenticated }) => {
       .required("Campo obrigatório!"),
     course_module: yup.string().required("Campo obrigatório!"),
     contact: yup.string().required("Campo obrigatório!"),
-    bio: yup.string().required("Campo obrigatório!"), 
+    bio: yup.string().required("Campo obrigatório!"),
   });
 
   const {
@@ -48,17 +48,27 @@ export const Signup = ({ authenticated }) => {
 
   const history = useHistory();
 
-    const onSubmitFunction = ({ name, email, password, course_module, contact, bio }) => {
-      const user = { name, email, password, course_module, contact, bio }
+  const onSubmitFunction = ({
+    name,
+    email,
+    password,
+    course_module,
+    contact,
+    bio,
+  }) => {
+    const user = { name, email, password, course_module, contact, bio };
 
-      api.post("users", user).then((response) => {
+    api
+      .post("users", user)
+      .then((response) => {
         toast.success("Conta criada com sucesso");
-        console.log(response)
-        return history.push('/');
+        console.log(response);
+        return history.push("/");
       })
-      .catch((err) => toast.error("Erro ao criar a conta, verifique todos os campos"));
-
-    };
+      .catch((err) =>
+        toast.error("Erro ao criar a conta, verifique todos os campos")
+      );
+  };
 
   if (authenticated) {
     return <Redirect to="/dashboard" />;
@@ -67,10 +77,10 @@ export const Signup = ({ authenticated }) => {
   return (
     <Container>
       <Content>
-          <NavBar>
-            <img src={logo} alt="logo" className="imgLogo"></img>
-            <Link to="/">Voltar</Link>
-          </NavBar>
+        <NavBar>
+          <img src={logo} alt="logo" className="imgLogo"></img>
+          <Link to="/">Voltar</Link>
+        </NavBar>
         <AnimationContainer>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <h2>Crie sua conta</h2>
@@ -106,7 +116,7 @@ export const Signup = ({ authenticated }) => {
               icon={FiLock}
               lable="Confirmar senha"
               type="password"
-              placeholder="Digite novamente sua senha"
+              placeholder="Repita sua senha"
               error={errors.passwordConfirm?.message}
             />
             <Input
@@ -124,20 +134,17 @@ export const Signup = ({ authenticated }) => {
               icon={ImPencil2}
               lable="Bio"
               type="text"
-              placeholder="Digite um pouco sobre você"
+              placeholder="Um pouco sobre você"
               error={errors.bio?.message}
             />
             <ContainerSelect>
-            <label>Selecionar módulo</label>
-            <select
-            {...register("course_module")}  
-            type="select"
-            >
-              <option>Módulo 1 - Introdução ao Frontend</option>
-              <option>Módulo 2 - Frontend Avançado</option>
-              <option>Módulo 3 - Introdução ao Backend</option>
-              <option>Módulo 4 - Backend Avançado</option>
-            </select>
+              <label>Selecionar módulo</label>
+              <select {...register("course_module")} type="select">
+                <option>Módulo 1 - Introdução ao Frontend</option>
+                <option>Módulo 2 - Frontend Avançado</option>
+                <option>Módulo 3 - Introdução ao Backend</option>
+                <option>Módulo 4 - Backend Avançado</option>
+              </select>
             </ContainerSelect>
             <Button type="submit">Cadastrar</Button>
           </form>

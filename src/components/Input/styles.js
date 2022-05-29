@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   text-align: left;
-  div{
+  div {
     color: #f8f9fa;
     margin-bottom: 5px;
-    span{
+
+    span {
       color: #c53030;
     }
   }
@@ -23,18 +24,26 @@ export const InputContainer = styled.div`
 
   input {
     background: transparent;
+    background-color: #343b41 transparent;
     align-items: center;
-    flex: 1;
+    width: 100%;
     color: #f8faf9;
+    flex: 1;
     border: 0;
+    &textarea {
+    background: #343b41 transparent;
+    }
     &::placeholder {
-      color: #666360;
+      color: #f8faf9; 
+      background: #343b41 transparent;
     }
     &:focus{
       color: #f8faf9;
+      background: #343b41 transparent;
     }
-
   }
+
+  
 
 
   svg {
