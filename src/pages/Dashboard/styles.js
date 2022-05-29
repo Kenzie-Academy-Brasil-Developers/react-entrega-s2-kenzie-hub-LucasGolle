@@ -331,7 +331,7 @@ export const HeaderContainer = styled.div`
             padding: 1rem;   
 `
 
-export const ButtonLeft = styled.div`
+export const ButtonLeft = styled.button`
        background: #59323f;
        cursor: pointer;
        padding: 1rem;

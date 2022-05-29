@@ -86,8 +86,6 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
       });
   };
 
-  
-
   const onSubmit = (techs) => {
     if (!techs) {
       return toast.error("Complete o campo obrigatório");
@@ -167,11 +165,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                 <span onClick={editFunction}>x</span>
               </HeaderContainer>
               <label>Nome</label>
-              <input
-                name="title"
-                value={placeInput}
-                disabled={true}
-              ></input>
+              <input name="title" value={placeInput} disabled={true}></input>
               <label>Selecionar status</label>
               <select {...register("status")} type="select">
                 <option>Iniciante</option>
@@ -185,6 +179,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
                 <ButtonRight
                   onClick={() => {
                     excludeUpdate(id);
+                    editFunction();
                   }}
                   type="button"
                 >
