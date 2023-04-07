@@ -108,21 +108,27 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
     if (!techs) {
       return toast.error("Complete o campo obrigatório");
     }
-
+  
+    const techTitleLowerCase = techs.title.toLowerCase();
+    if (skills.some(skill => skill.title.toLowerCase() === techTitleLowerCase)) {
+      return toast.error("Essa tecnologia já foi cadastrada.");
+    }
+  
     api
-      .post("users/techs", techs, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        loadSkills();
-        onOffPopup();
-        toast.success("Tecnologia adicionada com sucesso");
-      })
-      .catch((err) => toast.error("Você já possui essa tecnologia"));
+    .post("users/techs", { title: techs.title, status: techs.status }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      loadSkills();
+      onOffPopup();
+      toast.success("Tecnologia adicionada com sucesso");
+    })
+    .catch((err) => toast.error("Erro ao adicionar tecnologia"));
   };
-
+  
+  
   const logout = () => {
     localStorage.clear();
     setAuthenticated(false);
