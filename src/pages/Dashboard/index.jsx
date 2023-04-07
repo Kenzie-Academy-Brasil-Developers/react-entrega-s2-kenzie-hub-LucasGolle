@@ -31,6 +31,8 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
 
   const [user] = useState(JSON.parse(localStorage.getItem("user")));
 
+  const [editedSkill, setEditedSkill] = useState({});
+
   const [skills, setSkills] = useState([]);
 
   const [popup, setPopup] = useState(false);
@@ -39,11 +41,18 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
 
   const [id, setId] = useState([]);
 
+  const cancelEdit = () => {
+    setEditedSkill({});
+    setskillEdit(false);
+  };
+  
+
   const [placeInput, setPlaceInput] = useState("");
 
-  const editFunction = () => {
-    setskillEdit(!skillEdit);
+  const editFunction = (skill) => {
+    setEditedSkill(skill);
   };
+  
 
   const onOffPopup = () => {
     setPopup(!popup);
@@ -74,17 +83,26 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
       });
   };
 
-  const editUpdate = (data) => {
-    api
-      .put(`users/techs/${id}`, data, {
+  const editUpdate = async (data) => {
+    try {
+      const response = await api.put(`users/techs/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
+          
         },
-      })
-      .then((response) => {
-        loadSkills();
+        
       });
+      toast.success("Status da tecnologia atualizado");
+      await loadSkills();
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  
+  
+  
+  
 
   const onSubmit = (techs) => {
     if (!techs) {
@@ -156,40 +174,7 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
             </SelectSkills>
           </GlobalPopUp>
         )}
-
-        {skillEdit && (
-          <GlobalPopUp>
-            <EditSkill onClick={handleSubmit(editUpdate)}>
-              <HeaderContainer>
-                <h2>Tecnologia Detalhes</h2>
-                <span onClick={editFunction}>x</span>
-              </HeaderContainer>
-              <label>Nome</label>
-              <input name="title" value={placeInput} disabled={true}></input>
-              <label>Selecionar status</label>
-              <select {...register("status")} type="select">
-                <option>Iniciante</option>
-                <option>Intermediário</option>
-                <option>Avançado</option>
-              </select>
-              <ButtonContainer>
-                <ButtonLeft type="submit" onClick={editFunction}>
-                  Salvar alterações
-                </ButtonLeft>
-                <ButtonRight
-                  onClick={() => {
-                    excludeUpdate(id);
-                    editFunction();
-                  }}
-                  type="button"
-                >
-                  Excluir
-                </ButtonRight>
-              </ButtonContainer>
-            </EditSkill>
-          </GlobalPopUp>
-        )}
-
+  
         <SkillsContainer>
           {skills.map((skill) => (
             <Card
@@ -197,14 +182,60 @@ export const Dashboard = ({ authenticated, setAuthenticated }) => {
               title={skill.title}
               status={skill.status}
               onClick={() => {
-                editFunction();
+                editFunction(skill);
                 setPlaceInput(skill.title);
                 setId(skill.id);
+                setskillEdit(true);
               }}
             />
           ))}
         </SkillsContainer>
+  
+        {skillEdit && (
+  <GlobalPopUp>
+    <EditSkill>
+      <HeaderContainer>
+        <h2>Tecnologia Detalhes</h2>
+        <span onClick={cancelEdit}>x</span>
+      </HeaderContainer>
+      <label>Nome</label>
+      <input
+        name="title"
+        value={editedSkill.title || ""}
+        disabled={true}
+      ></input>
+      <label>Selecionar status</label>
+      <select
+        {...register("status")}
+        type="select"
+        defaultValue={editedSkill.status}
+      >
+        <option value="Iniciante">Iniciante</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
+      </select>
+      <ButtonContainer>
+        <ButtonLeft
+          onClick={() => {
+            editUpdate({
+              ...editedSkill,
+              status: document.querySelector(
+                "select[name='status']"
+              ).value,
+            });
+            setEditedSkill({});
+            setskillEdit(false);
+          }}
+        >
+          Salvar informações
+        </ButtonLeft>
+        <ButtonRight onClick={cancelEdit}>Cancelar</ButtonRight>
+      </ButtonContainer>
+    </EditSkill>
+  </GlobalPopUp>
+)}
+
       </Container>
     </>
   );
-};
+                }
